@@ -20,10 +20,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     Location location = Location();
     await location.getCurrentLocation();
     WeatherModel weatherModel = WeatherModel();
-    print(location.getLongitude());
-    print(location.getLatitude());
     var weatherData = await weatherModel.getLocationWeather(location);
-    print(weatherData['main']['temp']);
     Navigator.push(
         context,
         MaterialPageRoute(

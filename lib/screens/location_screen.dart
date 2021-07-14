@@ -28,7 +28,6 @@ class _LocationScreenState extends State<LocationScreen> {
 
   void updateUI(dynamic weatherData) {
     setState(() {
-      print(weatherData);
       if (weatherData == '' || weatherData == null) {
         temperature = 0;
         condition = 0;
@@ -43,7 +42,6 @@ class _LocationScreenState extends State<LocationScreen> {
       cityName = weatherData['sys']['country'];
       icon = weatherModel.getWeatherIcon(temperature);
       message = weatherModel.getMessage(condition);
-      print(cityName);
     });
   }
 
@@ -70,7 +68,6 @@ class _LocationScreenState extends State<LocationScreen> {
         location: location,
       );
     }));
-    print(pos);
     getLocationByLatLng(pos);
   }
 
@@ -80,7 +77,6 @@ class _LocationScreenState extends State<LocationScreen> {
     location.setLongitude(pos.longitude);
     WeatherModel weatherModel = WeatherModel();
     var weatherData = await weatherModel.getLocationWeather(location);
-    print(weatherData);
     updateUI(weatherData);
   }
 
